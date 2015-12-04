@@ -1,0 +1,9 @@
+name: XEWeb
+description: XEWeb blog
+url: http://www.xeweb.net
+permalink: /:year/:month/:day/:title/
+author: fire015
+paginate: 5
+paginate_path: "/page/:num/"
+markdown: kramdown
+highlighter: pygments
