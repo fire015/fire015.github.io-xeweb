@@ -46,9 +46,12 @@ footer {
 
 header {
 
-  h1,
-  nav { display: inline-block; }
+  h1 {
+    display: inline-block;
+    padding-top: 20px;
+  }
 
+  nav { display: inline-block; }
 }
 
 nav {
@@ -131,25 +134,6 @@ nav {
       text-shadow: 0 1px 0 rgba(255,255,255,.3);
     }
   }
-}
-
-/*
- * This code is courtesy Ben Balter, modified by Parker Moore for jekyllrb.com
- * http://ben.balter.com/2014/03/13/pages-anchor-links/
- */
-.header-link {
-  position: relative;
-  left: 0.5em;
-  opacity: 0;
-  font-size: 0.8em;
-  @include transition(opacity 0.2s ease-in-out 0.1s);
-}
-h2:hover .header-link,
-h3:hover .header-link,
-h4:hover .header-link,
-h5:hover .header-link,
-h6:hover .header-link {
-  opacity: 1;
 }
 
 @media (max-width: 768px) {
@@ -273,15 +257,6 @@ aside {
       left: -30px;
     }
   }
-}
-
-/* Documentation */
-
-.docs {
-
-  article { min-height: 800px; }
-
-  .content { padding: 0; }
 }
 
 .section-nav {

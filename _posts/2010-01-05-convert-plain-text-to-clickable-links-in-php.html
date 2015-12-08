@@ -14,11 +14,10 @@ categories:
 
 
 {% highlight php %}
-
+<?php
 function clickable_links($text) {
   $text = eregi_replace('(((f|ht){1}tp://)[-a-zA-Z0-9@:%_+.~#?&//=]+)', '<a target="_blank" href="\1">\1</a>', $text);
   $text = eregi_replace('([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_+.~#?&//=]+)', '\1<a target="_blank" href="http://\2">\2</a>', $text);
   return $text;
 }
 {% endhighlight %}
-

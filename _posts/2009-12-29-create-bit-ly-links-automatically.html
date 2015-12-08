@@ -16,7 +16,7 @@ categories:
 
 
 {% highlight php %}
-
+<?php
 function create_bitly_link($apikey, $username, $url) {
 	$ch = curl_init("http://api.bit.ly/shorten?version=2.0.1&longUrl=".urlencode($url)."&login=".$username."&apiKey=".$apikey);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -32,4 +32,3 @@ function create_bitly_link($apikey, $username, $url) {
 	}
 }
 {% endhighlight %}
-

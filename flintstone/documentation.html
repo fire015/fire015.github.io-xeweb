@@ -6,41 +6,158 @@ subsection: documentation
 permalink: /flintstone/documentation/
 ---
 
-<h2>Documentation</h2>
 <p><a href="/flintstone/docs/" class="button">View Generated Docs</a></p>
 
 <p><strong>Flintstone::load(string $database, array $options)</strong></p>
-<p>Load a database with options, returns an object to be used for the methods below:</p>
-<ul>
-	<li>$dir - the directory where the database files are stored (this should be somewhere that is not web accessible)<br /><em>e.g. /path/to/database/</em></li>
-	<li>$ext (.dat) - the database file extension to use<br /><em>e.g. .txt</em></li>
-	<li>$gzip (false) - use gzip to compress the database<br /><em>e.g. true</em></li>
-	<li>$cache (true) - store get() results in memory<br /><em>e.g. false</em></li>
-	<li>$formatter (object) - the formatter class used to encode/decode data<br /><em>e.g. new JsonFormatter()</em></li>
-	<li>$swap_memory_limit (1048576) - amount of memory to use before writing to a temporary file<br /><em>e.g. 0</em></li>
-</ul>
+<p>Load a database - returns an instance of <code>FlintstoneDB</code> (see methods below).</p>
 
-<div style="padding-left: 50px">
-	<p><strong>get(string $key)</strong></p>
-	<p>Retrieve data for the key name. Returns false if it does not exist.</p>
+<div class="mobile-side-scroller">
+	<table>
+		<thead>
+			<tr>
+				<th>Option</th>
+				<th>Description</th>
+				<th>Default Value</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<p><code>dir</code></p>
+				</td>
+				<td>
+					<p>The directory where the database files are stored (this should be somewhere that is not web accessible) e.g. /path/to/database/</p>
+				</td>
+				<td>
+					<p>'' (empty string)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>ext</code></p>
+				</td>
+				<td>
+					<p>The database file extension to use</p>
+				</td>
+				<td>
+					<p>.dat</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>gzip</code></p>
+				</td>
+				<td>
+					<p>Use gzip to compress the database</p>
+				</td>
+				<td>
+					<p>false</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>cache</code></p>
+				</td>
+				<td>
+					<p>Store get() results in memory</p>
+				</td>
+				<td>
+					<p>true</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>formatter</code></p>
+				</td>
+				<td>
+					<p>The formatter class used to encode/decode data</p>
+				</td>
+				<td>
+					<p>null</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>swap_memory_limit</code></p>
+				</td>
+				<td>
+					<p>The amount of memory to use before writing to a temporary file</p>
+				</td>
+				<td>
+					<p>1048576</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 
-	<p><strong>set(string $key, mixed $data)</strong></p>
-	<p>Set data for the key name. Data can be a string, integer, float or array. Returns true or will throw an exception if fails to set.</p>
-
-	<p><strong>replace(string $key, mixed $data)</strong></p>
-	<p>Replace data for the key name. Using set() on an existing key has the same effect. Returns true or will throw an exception if fails to set.</p>
-
-	<p><strong>delete(string $key)</strong></p>
-	<p>Delete the key name. Returns true or will throw an exception if fails to delete.</p>
-
-	<p><strong>flush()</strong></p>
-	<p>Empty the database. Returns true or will throw an exception if fails to flush.</p>
-
-	<p><strong>getKeys()</strong></p>
-	<p>Returns an array of all of the keys in the database.</p>
-
-	<p><strong>getAll()</strong></p>
-	<p>Returns all data in the database.</p>
+<div class="mobile-side-scroller">
+	<table>
+		<thead>
+			<tr>
+				<th>Method</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<p><code>get(string $key)</code></p>
+				</td>
+				<td>
+					<p>Retrieve data for the key name. Returns false if it does not exist.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>set(string $key, mixed $data)</code></p>
+				</td>
+				<td>
+					<p>Set data for the key name. Data can be a string, integer, float or array. Returns true or will throw an exception if fails to set.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>replace(string $key, mixed $data)</code></p>
+				</td>
+				<td>
+					<p>Replace data for the key name. Using set() on an existing key has the same effect. Returns true or will throw an exception if fails to set.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>delete(string $key)</code></p>
+				</td>
+				<td>
+					<p>Delete the key name. Returns true or will throw an exception if fails to delete.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>flush()</code></p>
+				</td>
+				<td>
+					<p>Empty the database. Returns true or will throw an exception if fails to flush.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>getKeys()</code></p>
+				</td>
+				<td>
+					<p>Returns an array of all of the keys in the database.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><code>getAll()</code></p>
+				</td>
+				<td>
+					<p>Returns all data in the database.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 
 <p><strong>Flintstone::unload(string $database)</strong></p>
