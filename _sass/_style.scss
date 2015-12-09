@@ -338,7 +338,7 @@ aside {
 
 /* News */
 
-article h2:first-child { margin-top: 0; }
+article h1:first-child, article h2:first-child { margin-top: 0; }
 
 .post-category,
 .post-meta {
@@ -493,7 +493,7 @@ p { line-height: 1.5em; }
 
 article {
 
-  h2, h3, h4, h5, h6 { margin: 1em 0; }
+  h1, h2, h3, h4, h5, h6 { margin: 0.5em 0; }
 
   h4 { color: #fff; }
 
