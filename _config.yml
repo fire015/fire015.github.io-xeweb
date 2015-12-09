@@ -7,8 +7,5 @@ paginate_path: /page/:num/
 markdown: kramdown
 highlighter: pygments
 
-gems:
-  - jekyll-redirect-from
-
 exclude:
   - tools
