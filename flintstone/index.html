@@ -27,7 +27,7 @@ composer require fire015/flintstone
 {% highlight json %}
 {
 	"require": {
-		"fire015/flintstone": "1.*"
+		"fire015/flintstone": "2.*"
 	}
 }
 {% endhighlight %}
@@ -41,7 +41,7 @@ require 'vendor/autoload.php';
 use Flintstone\Flintstone;
 
 $options = array('dir' => '/path/to/database/dir/');
-$users = Flintstone::load('users', $options);
+$users = new Flintstone('users', $options);
 {% endhighlight %}
 
 <h2>Requirements</h2>

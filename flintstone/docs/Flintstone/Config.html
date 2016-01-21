@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Flintstone\Flintstone | API</title>
+    <title>Flintstone\Config | API</title>
 
             <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Flintstone_Flintstone" data-root-path="../">
+    <body id="class" data-name="class:Flintstone_Config" data-root-path="../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,33 +65,21 @@
                 <li><span class="label label-default">class</span></li>
                                                             <li><a href="../Flintstone.html">Flintstone</a></li>
     
-                <li>Flintstone</li>
+                <li>Config</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>Flintstone</h1>
+        <h1>Config</h1>
     </div>
 
     <p>    class
-    <strong>Flintstone</strong>
+    <strong>Config</strong>
 </p>
 
     
     
-            <h2>Constants</h2>
-
-            <table class="table table-condensed">
-                    <tr>
-                <td>VERSION</td>
-                <td class="last">
-                    <p><em>Flintstone version.</em></p>
-                    <p></p>
-                </td>
-            </tr>
-            </table>
-
     
     
             <h2>Methods</h2>
@@ -104,19 +92,18 @@
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method___construct">__construct</a>(
-    <a href="../Flintstone/Database.html"><abbr title="Flintstone\Database">Database</abbr></a>|string $database, 
-    <a href="../Flintstone/Config.html"><abbr title="Flintstone\Config">Config</abbr></a>|array $config)
+    array $config = array())
                                             <p>Constructor.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <a href="../Flintstone/Database.html"><abbr title="Flintstone\Database">Database</abbr></a>
+    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getDatabase">getDatabase</a>()
-                                            <p>Get the database.</p>                </div>
+                    <a href="#method_getDir">getDir</a>()
+                                            <p>Get the dir.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -125,41 +112,19 @@
     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setDatabase">setDatabase</a>(
-    <abbr title="Flintstone\Flintstone\Database">Database</abbr> $database)
-                                            <p>Set the database.</p>                </div>
+                    <a href="#method_setDir">setDir</a>(
+    string $dir)
+                                            <p>Set the dir.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <a href="../Flintstone/Config.html"><abbr title="Flintstone\Config">Config</abbr></a>
+    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getConfig">getConfig</a>()
-                                            <p>Get the config.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setConfig">setConfig</a>(
-    <abbr title="Flintstone\Flintstone\Config">Config</abbr> $config)
-                                            <p>Set the config.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    mixed
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_get">get</a>(
-    string $key)
-                                            <p>Get a key from the database.</p>                </div>
+                    <a href="#method_getExt">getExt</a>()
+                                            <p>Get the ext.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -168,10 +133,19 @@
     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_set">set</a>(
-    string $key, 
-    mixed $data)
-                                            <p>Set a key in the database.</p>                </div>
+                    <a href="#method_setExt">setExt</a>(
+    string $ext)
+                                            <p>Set the ext.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_useGzip">useGzip</a>()
+                                            <p>Use gzip?</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -180,9 +154,19 @@
     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_delete">delete</a>(
-    string $key)
-                                            <p>Delete a key from the database.</p>                </div>
+                    <a href="#method_setGzip">setGzip</a>(
+    bool $gzip)
+                                            <p>Set gzip.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../Flintstone/Cache/CacheInterface.html"><abbr title="Flintstone\Cache\CacheInterface">CacheInterface</abbr></a>|<abbr title="Flintstone\false">false</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCache">getCache</a>()
+                                            <p>Get the cache.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -191,28 +175,51 @@
     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_flush">flush</a>()
-                                            <p>Flush the database.</p>                </div>
+                    <a href="#method_setCache">setCache</a>(
+    mixed $cache)
+                                            <p>Set the cache.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    array
+    <a href="../Flintstone/Formatter/FormatterInterface.html"><abbr title="Flintstone\Formatter\FormatterInterface">FormatterInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getKeys">getKeys</a>()
-                                            <p>Get all keys from the database.</p>                </div>
+                    <a href="#method_getFormatter">getFormatter</a>()
+                                            <p>Get the formatter.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    array
+    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getAll">getAll</a>()
-                                            <p>Get all data from the database.</p>                </div>
+                    <a href="#method_setFormatter">setFormatter</a>(
+    <a href="../Flintstone/Formatter/FormatterInterface.html"><abbr title="Flintstone\Formatter\FormatterInterface">FormatterInterface</abbr></a>|null $formatter)
+                                            <p>Set the formatter.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getSwapMemoryLimit">getSwapMemoryLimit</a>()
+                                            <p>Get the swap memory limit.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setSwapMemoryLimit">setSwapMemoryLimit</a>(
+    int $limit)
+                                            <p>Set the swap memory limit.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -223,12 +230,11 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line         line 43</div>
+        <div class="location">at line         line 33</div>
         <code>                    
     
     <strong>__construct</strong>(
-    <a href="../Flintstone/Database.html"><abbr title="Flintstone\Database">Database</abbr></a>|string $database, 
-    <a href="../Flintstone/Config.html"><abbr title="Flintstone\Config">Config</abbr></a>|array $config)</code>
+    array $config = array())</code>
     </h3>
     <div class="details">
                     <div class="method-description">
@@ -239,13 +245,7 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    <a href="../Flintstone/Database.html"><abbr title="Flintstone\Database">Database</abbr></a>|string</td>
-                <td>$database</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-    <a href="../Flintstone/Config.html"><abbr title="Flintstone\Config">Config</abbr></a>|array</td>
+    array</td>
                 <td>$config</td>
                 <td></td>
             </tr>
@@ -259,15 +259,15 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getDatabase">
-        <div class="location">at line         line 62</div>
+                    <h3 id="method_getDir">
+        <div class="location">at line         line 70</div>
         <code>                    
-    <a href="../Flintstone/Database.html"><abbr title="Flintstone\Database">Database</abbr></a>
-    <strong>getDatabase</strong>()</code>
+    string
+    <strong>getDir</strong>()</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Get the database.</p>                                </div>
+                                    <p>Get the dir.</p>                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -275,7 +275,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    <a href="../Flintstone/Database.html"><abbr title="Flintstone\Database">Database</abbr></a></td>
+    string</td>
             <td></td>
         </tr>
     </table>
@@ -287,45 +287,54 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setDatabase">
-        <div class="location">at line         line 72</div>
-        <code>                    
-    
-    <strong>setDatabase</strong>(
-    <abbr title="Flintstone\Flintstone\Database">Database</abbr> $database)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Set the database.</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    <abbr title="Flintstone\Flintstone\Database">Database</abbr></td>
-                <td>$database</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getConfig">
+                    <h3 id="method_setDir">
         <div class="location">at line         line 82</div>
         <code>                    
-    <a href="../Flintstone/Config.html"><abbr title="Flintstone\Config">Config</abbr></a>
-    <strong>getConfig</strong>()</code>
+    
+    <strong>setDir</strong>(
+    string $dir)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Get the config.</p>                                </div>
+                                    <p>Set the dir.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string</td>
+                <td>$dir</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../Flintstone/Exception.html"><abbr title="Flintstone\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getExt">
+        <div class="location">at line         line 96</div>
+        <code>                    
+    string
+    <strong>getExt</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get the ext.</p>                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -333,7 +342,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    <a href="../Flintstone/Config.html"><abbr title="Flintstone\Config">Config</abbr></a></td>
+    string</td>
             <td></td>
         </tr>
     </table>
@@ -345,24 +354,24 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setConfig">
-        <div class="location">at line         line 92</div>
+                    <h3 id="method_setExt">
+        <div class="location">at line         line 110</div>
         <code>                    
     
-    <strong>setConfig</strong>(
-    <abbr title="Flintstone\Flintstone\Config">Config</abbr> $config)</code>
+    <strong>setExt</strong>(
+    string $ext)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Set the config.</p>                                </div>
+                                    <p>Set the ext.</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    <abbr title="Flintstone\Flintstone\Config">Config</abbr></td>
-                <td>$config</td>
+    string</td>
+                <td>$ext</td>
                 <td></td>
             </tr>
             </table>
@@ -375,140 +384,140 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_get">
-        <div class="location">at line         line 105</div>
+                    <h3 id="method_useGzip">
+        <div class="location">at line         line 124</div>
         <code>                    
-    mixed
-    <strong>get</strong>(
-    string $key)</code>
+    bool
+    <strong>useGzip</strong>()</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Get a key from the database.</p>                                </div>
+                                    <p>Use gzip?</p>                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    string</td>
-                <td>$key</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
             <td>
+    bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setGzip">
+        <div class="location">at line         line 134</div>
+        <code>                    
+    
+    <strong>setGzip</strong>(
+    bool $gzip)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set gzip.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    bool</td>
+                <td>$gzip</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCache">
+        <div class="location">at line         line 144</div>
+        <code>                    
+    <a href="../Flintstone/Cache/CacheInterface.html"><abbr title="Flintstone\Cache\CacheInterface">CacheInterface</abbr></a>|<abbr title="Flintstone\false">false</abbr>
+    <strong>getCache</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get the cache.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../Flintstone/Cache/CacheInterface.html"><abbr title="Flintstone\Cache\CacheInterface">CacheInterface</abbr></a>|<abbr title="Flintstone\false">false</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCache">
+        <div class="location">at line         line 156</div>
+        <code>                    
+    
+    <strong>setCache</strong>(
+    mixed $cache)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set the cache.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
     mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_set">
-        <div class="location">at line         line 145</div>
-        <code>                    
-    
-    <strong>set</strong>(
-    string $key, 
-    mixed $data)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Set a key in the database.</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    string</td>
-                <td>$key</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-    mixed</td>
-                <td>$data</td>
+                <td>$cache</td>
                 <td></td>
             </tr>
             </table>
 
             
             
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_delete">
-        <div class="location">at line         line 173</div>
-        <code>                    
-    
-    <strong>delete</strong>(
-    string $key)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Delete a key from the database.</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
+                            <h4>Exceptions</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
-                <td>$key</td>
+                <td><a href="../Flintstone/Exception.html"><abbr title="Flintstone\Exception">Exception</abbr></a></td>
                 <td></td>
             </tr>
             </table>
 
             
-            
-            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_flush">
-        <div class="location">at line         line 185</div>
+                    <h3 id="method_getFormatter">
+        <div class="location">at line         line 174</div>
         <code>                    
-    
-    <strong>flush</strong>()</code>
+    <a href="../Flintstone/Formatter/FormatterInterface.html"><abbr title="Flintstone\Formatter\FormatterInterface">FormatterInterface</abbr></a>
+    <strong>getFormatter</strong>()</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Flush the database.</p>                                </div>
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getKeys">
-        <div class="location">at line         line 201</div>
-        <code>                    
-    array
-    <strong>getKeys</strong>()</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Get all keys from the database.</p>                                </div>
+                                    <p>Get the formatter.</p>                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -516,7 +525,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    array</td>
+    <a href="../Flintstone/Formatter/FormatterInterface.html"><abbr title="Flintstone\Formatter\FormatterInterface">FormatterInterface</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -528,15 +537,54 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getAll">
-        <div class="location">at line         line 220</div>
+                    <h3 id="method_setFormatter">
+        <div class="location">at line         line 186</div>
         <code>                    
-    array
-    <strong>getAll</strong>()</code>
+    
+    <strong>setFormatter</strong>(
+    <a href="../Flintstone/Formatter/FormatterInterface.html"><abbr title="Flintstone\Formatter\FormatterInterface">FormatterInterface</abbr></a>|null $formatter)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Get all data from the database.</p>                                </div>
+                                    <p>Set the formatter.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <a href="../Flintstone/Formatter/FormatterInterface.html"><abbr title="Flintstone\Formatter\FormatterInterface">FormatterInterface</abbr></a>|null</td>
+                <td>$formatter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../Flintstone/Exception.html"><abbr title="Flintstone\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSwapMemoryLimit">
+        <div class="location">at line         line 204</div>
+        <code>                    
+    int
+    <strong>getSwapMemoryLimit</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get the swap memory limit.</p>                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -544,11 +592,41 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    array</td>
+    int</td>
             <td></td>
         </tr>
     </table>
 
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setSwapMemoryLimit">
+        <div class="location">at line         line 214</div>
+        <code>                    
+    
+    <strong>setSwapMemoryLimit</strong>(
+    int $limit)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set the swap memory limit.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    int</td>
+                <td>$limit</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
             
             
                     </div>

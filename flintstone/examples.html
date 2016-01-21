@@ -12,8 +12,8 @@ permalink: /flintstone/examples/
 $options = array('dir' => '/path/to/database/dir/');
 
 // Load the databases
-$users = Flintstone::load('users', $options);
-$settings = Flintstone::load('settings', $options);
+$users = new Flintstone('users', $options);
+$settings = new Flintstone('settings', $options);
 
 // Set keys
 $users->set('bob', array('email' => 'bob@site.com', 'password' => '123456'));
@@ -40,27 +40,12 @@ foreach ($keys as $username) {
 	echo $username.', your password is ' . $user['password'];
 }
 
+// Retrieve all data
+$data = $users->getAll(); // returns array('bob' => array('email' => 'bob@site.com', 'password' => '123456'), 'joe' => array('email' => 'joe@site.com', 'password' => 'test'), ...)
+
 // Delete a key
 $users->delete('joe');
 
 // Flush the database
 $users->flush();
-{% endhighlight %}
-
-<h2>Changing the formatter</h2>
-<p>By default Flintstone will encode/decode data using PHP's serialize functions, however you can override this with your own class if you prefer.</p>
-<p>Just make sure it implements Flintstone\Formatter\FormatterInterface and then you can provide it as the formatter option.</p>
-<p>If you wish to use JSON as the formatter, Flintstone already ships with this as per the example below:</p>
-
-{% highlight php %}
-<?php
-require 'vendor/autoload.php';
-
-use Flintstone\Flintstone;
-use Flintstone\Formatter\JsonFormatter;
-
-$users = Flintstone::load('users', array(
-	'dir' => __DIR__,
-	'formatter' => new JsonFormatter()
-));
 {% endhighlight %}
