@@ -4,14 +4,21 @@ The XEWeb blog.
 ## Installation
 
 ```
-gem install bundler
-bundle install
+brew install rbenv ruby-build
+rbenv install 2.4.0
+rbenv global 2.4.0
+eval "$(rbenv init -)"
+rbenv exec gem install bundler
+rbenv exec bundle install --path vendor/bundle
 ```
+
+https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/
+https://gorails.com/setup/osx/10.11-el-capitan
 
 ## Running
 
 ```
-bundle exec jekyll serve -P 8000
+rbenv exec bundle exec jekyll serve -P 8000
 ```
 
 ## Tools

@@ -9,3 +9,4 @@ highlighter: pygments
 
 exclude:
   - tools
+  - vendor

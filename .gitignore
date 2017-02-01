@@ -3,3 +3,5 @@ _site
 _sass/.sass-cache
 .jekyll-metadata
 .idea
+.bundle
+/vendor
