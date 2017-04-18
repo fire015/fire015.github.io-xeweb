@@ -121,7 +121,7 @@ $users = new Flintstone('users', $options);
 					<p><code>set(string $key, mixed $data)</code></p>
 				</td>
 				<td>
-					<p>Set data for the key name. Data can be a string, integer, float or array. Returns true or will throw an exception if fails to set.</p>
+					<p>Set data for the key name. Data can be a string, integer, float or array. Will throw an exception if fails to set.</p>
 				</td>
 			</tr>
 			<tr>
@@ -129,7 +129,7 @@ $users = new Flintstone('users', $options);
 					<p><code>delete(string $key)</code></p>
 				</td>
 				<td>
-					<p>Delete the key name. Returns true or will throw an exception if fails to delete.</p>
+					<p>Delete the key name. Will throw an exception if fails to delete.</p>
 				</td>
 			</tr>
 			<tr>
@@ -137,7 +137,7 @@ $users = new Flintstone('users', $options);
 					<p><code>flush()</code></p>
 				</td>
 				<td>
-					<p>Empty the database. Returns true or will throw an exception if fails to flush.</p>
+					<p>Empty the database. Will throw an exception if fails to flush.</p>
 				</td>
 			</tr>
 			<tr>
