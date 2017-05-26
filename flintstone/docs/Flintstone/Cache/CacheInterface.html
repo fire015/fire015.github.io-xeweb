@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Flintstone\Cache\CacheInterface | API</title>
+    <title>Flintstone\Cache\CacheInterface | Flintstone API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -45,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../../index.html">API</a>
+                <a class="navbar-brand" href="../../index.html">Flintstone API</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
@@ -72,12 +72,18 @@
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>CacheInterface</h1>
+        <h1>
+            CacheInterface
+                
+        </h1>
     </div>
 
     <p>    interface
     <strong>CacheInterface</strong>
 </p>
+
+        
+    
 
     
     
@@ -88,56 +94,51 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    bool
+                    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_contains">contains</a>(
-    string $key)
+                    <a href="#method_contains">contains</a>(string $key)
+        
                                             <p>Check if a key exists in the cache.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    mixed
+                    mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_get">get</a>(
-    string $key)
+                    <a href="#method_get">get</a>(string $key)
+        
                                             <p>Get a key from the cache.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_set">set</a>(
-    string $key, 
-    mixed $data)
+                    <a href="#method_set">set</a>(string $key, mixed $data)
+        
                                             <p>Set a key in the cache.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_delete">delete</a>(
-    string $key)
+                    <a href="#method_delete">delete</a>(string $key)
+        
                                             <p>Delete a key from the cache.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_flush">flush</a>()
+        
                                             <p>Flush the cache.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -150,12 +151,14 @@
                     <div class="method-item">
                     <h3 id="method_contains">
         <div class="location">at line         line 23</div>
-        <code>                    
-    bool
-    <strong>contains</strong>(
-    string $key)</code>
+        <code>                    bool
+    <strong>contains</strong>(string $key)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Check if a key exists in the cache.</p>                                </div>
                 <div class="tags">
@@ -163,8 +166,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$key</td>
                 <td></td>
             </tr>
@@ -175,8 +177,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    bool</td>
+            <td>bool</td>
             <td></td>
         </tr>
     </table>
@@ -190,12 +191,14 @@
                     <div class="method-item">
                     <h3 id="method_get">
         <div class="location">at line         line 32</div>
-        <code>                    
-    mixed
-    <strong>get</strong>(
-    string $key)</code>
+        <code>                    mixed
+    <strong>get</strong>(string $key)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Get a key from the cache.</p>                                </div>
                 <div class="tags">
@@ -203,8 +206,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$key</td>
                 <td></td>
             </tr>
@@ -215,8 +217,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    mixed</td>
+            <td>mixed</td>
             <td></td>
         </tr>
     </table>
@@ -231,12 +232,13 @@
                     <h3 id="method_set">
         <div class="location">at line         line 40</div>
         <code>                    
-    
-    <strong>set</strong>(
-    string $key, 
-    mixed $data)</code>
+    <strong>set</strong>(string $key, mixed $data)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Set a key in the cache.</p>                                </div>
                 <div class="tags">
@@ -244,14 +246,12 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$key</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$data</td>
                 <td></td>
             </tr>
@@ -268,11 +268,13 @@
                     <h3 id="method_delete">
         <div class="location">at line         line 47</div>
         <code>                    
-    
-    <strong>delete</strong>(
-    string $key)</code>
+    <strong>delete</strong>(string $key)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Delete a key from the cache.</p>                                </div>
                 <div class="tags">
@@ -280,8 +282,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$key</td>
                 <td></td>
             </tr>
@@ -298,10 +299,13 @@
                     <h3 id="method_flush">
         <div class="location">at line         line 52</div>
         <code>                    
-    
-    <strong>flush</strong>()</code>
+    <strong>flush</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Flush the cache.</p>                                </div>
                 <div class="tags">

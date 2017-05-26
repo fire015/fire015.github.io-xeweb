@@ -11,7 +11,7 @@ permalink: /flintstone/documentation/
 <h2>Loading a database</h2>
 {% highlight php %}
 <?php
-$options = array('dir' => '/path/to/database/dir/');
+$options = ['dir' => '/path/to/database/dir/'];
 $users = new Flintstone('users', $options);
 {% endhighlight %}
 
@@ -172,10 +172,10 @@ require 'vendor/autoload.php';
 use Flintstone\Flintstone;
 use Flintstone\Formatter\JsonFormatter;
 
-$users = new Flintstone('users', array(
+$users = new Flintstone('users', [
 	'dir' => __DIR__,
 	'formatter' => new JsonFormatter()
-));
+]);
 {% endhighlight %}
 
 <h2>Changing the cache</h2>
