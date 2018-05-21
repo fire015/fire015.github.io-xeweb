@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  app:
+    image: jekyll/jekyll:3.7.3
+    ports:
+      - 4000:4000
+    volumes:
+     - .:/srv/jekyll
+     - ./vendor/bundle:/usr/local/bundle
+    command: jekyll serve

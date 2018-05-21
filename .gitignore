@@ -4,4 +4,4 @@ _sass/.sass-cache
 .jekyll-metadata
 .idea
 .bundle
-/vendor
+.DS_Store
