@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,9 +66,7 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../Flintstone.html">Flintstone</a></li>
-    
-                <li>Validation</li>
+                        <li><a href="../Flintstone.html">Flintstone</a></li><li class="backslash">\</li><li>Validation</li>
             </ol>
         </div>
                 <div id="page-content">
@@ -106,16 +107,6 @@
                     static&nbsp;
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_validateData">validateData</a>(mixed $data)
-        
-                                            <p>Check the data type is valid.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;
-                </div>
-                <div class="col-md-8 type">
                     <a href="#method_validateDatabaseName">validateDatabaseName</a>(string $name)
         
                                             <p>Check the database name is valid.</p>                </div>
@@ -129,7 +120,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_validateKey">
-        <div class="location">at line         line 14</div>
+        <div class="location">at         line 14</div>
         <code>        static            
     <strong>validateKey</strong>(string $key)
         </code>
@@ -139,7 +130,7 @@
     
 
                     <div class="method-description">
-                                    <p>Validate the key.</p>                                </div>
+                                    <p>Validate the key.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -168,48 +159,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_validateData">
-        <div class="location">at line         line 28</div>
-        <code>        static            
-    <strong>validateData</strong>(mixed $data)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Check the data type is valid.</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed</td>
-                <td>$data</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../Flintstone/Exception.html"><abbr title="Flintstone\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_validateDatabaseName">
-        <div class="location">at line         line 42</div>
+        <div class="location">at         line 28</div>
         <code>        static            
     <strong>validateDatabaseName</strong>(string $name)
         </code>
@@ -219,7 +170,7 @@
     
 
                     <div class="method-description">
-                                    <p>Check the database name is valid.</p>                                </div>
+                                    <p>Check the database name is valid.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 

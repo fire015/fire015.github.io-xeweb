@@ -1,4 +1,6 @@
 
+window.projectVersion = 'master';
+
 (function(root) {
 
     var bhIndex = null;
@@ -45,6 +47,7 @@
             
             {"type": "Class", "fromName": "Flintstone", "fromLink": "Flintstone.html", "link": "Flintstone/Config.html", "name": "Flintstone\\Config", "doc": "&quot;&quot;"},
                                                         {"type": "Method", "fromName": "Flintstone\\Config", "fromLink": "Flintstone/Config.html", "link": "Flintstone/Config.html#method___construct", "name": "Flintstone\\Config::__construct", "doc": "&quot;Constructor.&quot;"},
+                    {"type": "Method", "fromName": "Flintstone\\Config", "fromLink": "Flintstone/Config.html", "link": "Flintstone/Config.html#method_normalizeConfig", "name": "Flintstone\\Config::normalizeConfig", "doc": "&quot;Normalize the user supplied config.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Config", "fromLink": "Flintstone/Config.html", "link": "Flintstone/Config.html#method_getDir", "name": "Flintstone\\Config::getDir", "doc": "&quot;Get the dir.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Config", "fromLink": "Flintstone/Config.html", "link": "Flintstone/Config.html#method_setDir", "name": "Flintstone\\Config::setDir", "doc": "&quot;Set the dir.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Config", "fromLink": "Flintstone/Config.html", "link": "Flintstone/Config.html#method_getExt", "name": "Flintstone\\Config::getExt", "doc": "&quot;Get the ext.&quot;"},
@@ -65,7 +68,9 @@
                     {"type": "Method", "fromName": "Flintstone\\Database", "fromLink": "Flintstone/Database.html", "link": "Flintstone/Database.html#method_getConfig", "name": "Flintstone\\Database::getConfig", "doc": "&quot;Get the config.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Database", "fromLink": "Flintstone/Database.html", "link": "Flintstone/Database.html#method_setConfig", "name": "Flintstone\\Database::setConfig", "doc": "&quot;Set the config.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Database", "fromLink": "Flintstone/Database.html", "link": "Flintstone/Database.html#method_getPath", "name": "Flintstone\\Database::getPath", "doc": "&quot;Get the path to the database file.&quot;"},
+                    {"type": "Method", "fromName": "Flintstone\\Database", "fromLink": "Flintstone/Database.html", "link": "Flintstone/Database.html#method_openFile", "name": "Flintstone\\Database::openFile", "doc": "&quot;Open the database file.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Database", "fromLink": "Flintstone/Database.html", "link": "Flintstone/Database.html#method_openTempFile", "name": "Flintstone\\Database::openTempFile", "doc": "&quot;Open a temporary file.&quot;"},
+                    {"type": "Method", "fromName": "Flintstone\\Database", "fromLink": "Flintstone/Database.html", "link": "Flintstone/Database.html#method_closeFile", "name": "Flintstone\\Database::closeFile", "doc": "&quot;Close the database file.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Database", "fromLink": "Flintstone/Database.html", "link": "Flintstone/Database.html#method_readFromFile", "name": "Flintstone\\Database::readFromFile", "doc": "&quot;Read lines from the database file.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Database", "fromLink": "Flintstone/Database.html", "link": "Flintstone/Database.html#method_appendToFile", "name": "Flintstone\\Database::appendToFile", "doc": "&quot;Append a line to the database file.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Database", "fromLink": "Flintstone/Database.html", "link": "Flintstone/Database.html#method_flushFile", "name": "Flintstone\\Database::flushFile", "doc": "&quot;Flush the database file.&quot;"},
@@ -85,18 +90,24 @@
                     {"type": "Method", "fromName": "Flintstone\\Flintstone", "fromLink": "Flintstone/Flintstone.html", "link": "Flintstone/Flintstone.html#method_flush", "name": "Flintstone\\Flintstone::flush", "doc": "&quot;Flush the database.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Flintstone", "fromLink": "Flintstone/Flintstone.html", "link": "Flintstone/Flintstone.html#method_getKeys", "name": "Flintstone\\Flintstone::getKeys", "doc": "&quot;Get all keys from the database.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Flintstone", "fromLink": "Flintstone/Flintstone.html", "link": "Flintstone/Flintstone.html#method_getAll", "name": "Flintstone\\Flintstone::getAll", "doc": "&quot;Get all data from the database.&quot;"},
+                    {"type": "Method", "fromName": "Flintstone\\Flintstone", "fromLink": "Flintstone/Flintstone.html", "link": "Flintstone/Flintstone.html#method_replace", "name": "Flintstone\\Flintstone::replace", "doc": "&quot;Replace a key in the database.&quot;"},
+                    {"type": "Method", "fromName": "Flintstone\\Flintstone", "fromLink": "Flintstone/Flintstone.html", "link": "Flintstone/Flintstone.html#method_getLineString", "name": "Flintstone\\Flintstone::getLineString", "doc": "&quot;Get the line string to write.&quot;"},
+                    {"type": "Method", "fromName": "Flintstone\\Flintstone", "fromLink": "Flintstone/Flintstone.html", "link": "Flintstone/Flintstone.html#method_decodeData", "name": "Flintstone\\Flintstone::decodeData", "doc": "&quot;Decode a string into data.&quot;"},
+                    {"type": "Method", "fromName": "Flintstone\\Flintstone", "fromLink": "Flintstone/Flintstone.html", "link": "Flintstone/Flintstone.html#method_encodeData", "name": "Flintstone\\Flintstone::encodeData", "doc": "&quot;Encode data into a string.&quot;"},
             
             {"type": "Class", "fromName": "Flintstone\\Formatter", "fromLink": "Flintstone/Formatter.html", "link": "Flintstone/Formatter/FormatterInterface.html", "name": "Flintstone\\Formatter\\FormatterInterface", "doc": "&quot;&quot;"},
                                                         {"type": "Method", "fromName": "Flintstone\\Formatter\\FormatterInterface", "fromLink": "Flintstone/Formatter/FormatterInterface.html", "link": "Flintstone/Formatter/FormatterInterface.html#method_encode", "name": "Flintstone\\Formatter\\FormatterInterface::encode", "doc": "&quot;Encode data into a string.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Formatter\\FormatterInterface", "fromLink": "Flintstone/Formatter/FormatterInterface.html", "link": "Flintstone/Formatter/FormatterInterface.html#method_decode", "name": "Flintstone\\Formatter\\FormatterInterface::decode", "doc": "&quot;Decode a string into data.&quot;"},
             
             {"type": "Class", "fromName": "Flintstone\\Formatter", "fromLink": "Flintstone/Formatter.html", "link": "Flintstone/Formatter/JsonFormatter.html", "name": "Flintstone\\Formatter\\JsonFormatter", "doc": "&quot;&quot;"},
-                                                        {"type": "Method", "fromName": "Flintstone\\Formatter\\JsonFormatter", "fromLink": "Flintstone/Formatter/JsonFormatter.html", "link": "Flintstone/Formatter/JsonFormatter.html#method_encode", "name": "Flintstone\\Formatter\\JsonFormatter::encode", "doc": "&quot;Encode data into a string.&quot;"},
+                                                        {"type": "Method", "fromName": "Flintstone\\Formatter\\JsonFormatter", "fromLink": "Flintstone/Formatter/JsonFormatter.html", "link": "Flintstone/Formatter/JsonFormatter.html#method___construct", "name": "Flintstone\\Formatter\\JsonFormatter::__construct", "doc": "&quot;&quot;"},
+                    {"type": "Method", "fromName": "Flintstone\\Formatter\\JsonFormatter", "fromLink": "Flintstone/Formatter/JsonFormatter.html", "link": "Flintstone/Formatter/JsonFormatter.html#method_encode", "name": "Flintstone\\Formatter\\JsonFormatter::encode", "doc": "&quot;Encode data into a string.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Formatter\\JsonFormatter", "fromLink": "Flintstone/Formatter/JsonFormatter.html", "link": "Flintstone/Formatter/JsonFormatter.html#method_decode", "name": "Flintstone\\Formatter\\JsonFormatter::decode", "doc": "&quot;Decode a string into data.&quot;"},
             
             {"type": "Class", "fromName": "Flintstone\\Formatter", "fromLink": "Flintstone/Formatter.html", "link": "Flintstone/Formatter/SerializeFormatter.html", "name": "Flintstone\\Formatter\\SerializeFormatter", "doc": "&quot;&quot;"},
                                                         {"type": "Method", "fromName": "Flintstone\\Formatter\\SerializeFormatter", "fromLink": "Flintstone/Formatter/SerializeFormatter.html", "link": "Flintstone/Formatter/SerializeFormatter.html#method_encode", "name": "Flintstone\\Formatter\\SerializeFormatter::encode", "doc": "&quot;Encode data into a string.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Formatter\\SerializeFormatter", "fromLink": "Flintstone/Formatter/SerializeFormatter.html", "link": "Flintstone/Formatter/SerializeFormatter.html#method_decode", "name": "Flintstone\\Formatter\\SerializeFormatter::decode", "doc": "&quot;Decode a string into data.&quot;"},
+                    {"type": "Method", "fromName": "Flintstone\\Formatter\\SerializeFormatter", "fromLink": "Flintstone/Formatter/SerializeFormatter.html", "link": "Flintstone/Formatter/SerializeFormatter.html#method_preserveLines", "name": "Flintstone\\Formatter\\SerializeFormatter::preserveLines", "doc": "&quot;Preserve new lines, recursive function.&quot;"},
             
             {"type": "Class", "fromName": "Flintstone", "fromLink": "Flintstone.html", "link": "Flintstone/Line.html", "name": "Flintstone\\Line", "doc": "&quot;&quot;"},
                                                         {"type": "Method", "fromName": "Flintstone\\Line", "fromLink": "Flintstone/Line.html", "link": "Flintstone/Line.html#method___construct", "name": "Flintstone\\Line::__construct", "doc": "&quot;&quot;"},
@@ -106,7 +117,6 @@
             
             {"type": "Class", "fromName": "Flintstone", "fromLink": "Flintstone.html", "link": "Flintstone/Validation.html", "name": "Flintstone\\Validation", "doc": "&quot;&quot;"},
                                                         {"type": "Method", "fromName": "Flintstone\\Validation", "fromLink": "Flintstone/Validation.html", "link": "Flintstone/Validation.html#method_validateKey", "name": "Flintstone\\Validation::validateKey", "doc": "&quot;Validate the key.&quot;"},
-                    {"type": "Method", "fromName": "Flintstone\\Validation", "fromLink": "Flintstone/Validation.html", "link": "Flintstone/Validation.html#method_validateData", "name": "Flintstone\\Validation::validateData", "doc": "&quot;Check the data type is valid.&quot;"},
                     {"type": "Method", "fromName": "Flintstone\\Validation", "fromLink": "Flintstone/Validation.html", "link": "Flintstone/Validation.html#method_validateDatabaseName", "name": "Flintstone\\Validation::validateDatabaseName", "doc": "&quot;Check the database name is valid.&quot;"},
             
             

@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,10 +66,7 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../../Flintstone.html">Flintstone</a></li>
-                                        <li><a href="../../Flintstone/Cache.html">Cache</a></li>
-    
-                <li>ArrayCache</li>
+                        <li><a href="../../Flintstone.html">Flintstone</a></li><li class="backslash">\</li><li><a href="../../Flintstone/Cache.html">Cache</a></li><li class="backslash">\</li><li>ArrayCache</li>
             </ol>
         </div>
                 <div id="page-content">
@@ -89,6 +89,19 @@
     
     
     
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_cache">
+                                        protected                                        array
+                </td>
+                <td>$cache</td>
+                <td class="last">Cache data.</td>
+                <td></td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
@@ -151,7 +164,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_contains">
-        <div class="location">at line         line 26</div>
+        <div class="location">at         line 17</div>
         <code>                    bool
     <strong>contains</strong>(string $key)
         </code>
@@ -161,7 +174,7 @@
     
 
                     <div class="method-description">
-                                    <p>Check if a key exists in the cache.</p>                                </div>
+                                    <p>Check if a key exists in the cache.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -191,7 +204,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at line         line 34</div>
+        <div class="location">at         line 25</div>
         <code>                    mixed
     <strong>get</strong>(string $key)
         </code>
@@ -201,7 +214,7 @@
     
 
                     <div class="method-description">
-                                    <p>Get a key from the cache.</p>                                </div>
+                                    <p>Get a key from the cache.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -231,7 +244,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at line         line 42</div>
+        <div class="location">at         line 33</div>
         <code>                    
     <strong>set</strong>(string $key, mixed $data)
         </code>
@@ -241,7 +254,7 @@
     
 
                     <div class="method-description">
-                                    <p>Set a key in the cache.</p>                                </div>
+                                    <p>Set a key in the cache.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -267,7 +280,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location">at line         line 50</div>
+        <div class="location">at         line 41</div>
         <code>                    
     <strong>delete</strong>(string $key)
         </code>
@@ -277,7 +290,7 @@
     
 
                     <div class="method-description">
-                                    <p>Delete a key from the cache.</p>                                </div>
+                                    <p>Delete a key from the cache.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -298,7 +311,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_flush">
-        <div class="location">at line         line 58</div>
+        <div class="location">at         line 49</div>
         <code>                    
     <strong>flush</strong>()
         </code>
@@ -308,7 +321,7 @@
     
 
                     <div class="method-description">
-                                    <p>Flush the cache.</p>                                </div>
+                                    <p>Flush the cache.</p>                                                </div>
                 <div class="tags">
             
             

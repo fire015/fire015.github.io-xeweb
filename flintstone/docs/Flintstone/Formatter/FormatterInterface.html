@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,10 +66,7 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">interface</span></li>
-                                                            <li><a href="../../Flintstone.html">Flintstone</a></li>
-                                        <li><a href="../../Flintstone/Formatter.html">Formatter</a></li>
-    
-                <li>FormatterInterface</li>
+                        <li><a href="../../Flintstone.html">Flintstone</a></li><li class="backslash">\</li><li><a href="../../Flintstone/Formatter.html">Formatter</a></li><li class="backslash">\</li><li>FormatterInterface</li>
             </ol>
         </div>
                 <div id="page-content">
@@ -120,7 +120,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_encode">
-        <div class="location">at line         line 23</div>
+        <div class="location">at         line 14</div>
         <code>                    string
     <strong>encode</strong>(mixed $data)
         </code>
@@ -130,7 +130,7 @@
     
 
                     <div class="method-description">
-                                    <p>Encode data into a string.</p>                                </div>
+                                    <p>Encode data into a string.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -160,7 +160,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_decode">
-        <div class="location">at line         line 32</div>
+        <div class="location">at         line 23</div>
         <code>                    mixed
     <strong>decode</strong>(string $data)
         </code>
@@ -170,7 +170,7 @@
     
 
                     <div class="method-description">
-                                    <p>Decode a string into data.</p>                                </div>
+                                    <p>Decode a string into data.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 

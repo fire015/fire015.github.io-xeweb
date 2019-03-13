@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,9 +66,7 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../Flintstone.html">Flintstone</a></li>
-    
-                <li>Database</li>
+                        <li><a href="../Flintstone.html">Flintstone</a></li><li class="backslash">\</li><li>Database</li>
             </ol>
         </div>
                 <div id="page-content">
@@ -113,6 +114,35 @@
             </table>
 
     
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_fileAccessMode">
+                                        protected                                        array
+                </td>
+                <td>$fileAccessMode</td>
+                <td class="last">File access mode.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_name">
+                                        protected                                        string
+                </td>
+                <td>$name</td>
+                <td class="last">Database name.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_config">
+                                        protected                                        <a href="../Flintstone/Config.html"><abbr title="Flintstone\Config">Config</abbr></a>
+                </td>
+                <td>$config</td>
+                <td class="last">Config class.</td>
+                <td></td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
@@ -179,12 +209,32 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/SplFileObject">SplFileObject</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_openFile">openFile</a>(int $mode)
+        
+                                            <p>Open the database file.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a target="_blank" href="http://php.net/SplTempFileObject">SplTempFileObject</a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_openTempFile">openTempFile</a>()
         
                                             <p>Open a temporary file.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_closeFile">closeFile</a>(<a target="_blank" href="http://php.net/SplFileObject">SplFileObject</a> $file)
+        
+                                            <p>Close the database file.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -235,7 +285,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line         line 80</div>
+        <div class="location">at         line 71</div>
         <code>                    
     <strong>__construct</strong>(string $name, <a href="../Flintstone/Config.html"><abbr title="Flintstone\Config">Config</abbr></a> $config = null)
         </code>
@@ -245,7 +295,7 @@
     
 
                     <div class="method-description">
-                                    <p>Constructor.</p>                                </div>
+                                    <p>Constructor.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -271,7 +321,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getName">
-        <div class="location">at line         line 94</div>
+        <div class="location">at         line 85</div>
         <code>                    string
     <strong>getName</strong>()
         </code>
@@ -281,7 +331,7 @@
     
 
                     <div class="method-description">
-                                    <p>Get the database name.</p>                                </div>
+                                    <p>Get the database name.</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -301,7 +351,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setName">
-        <div class="location">at line         line 106</div>
+        <div class="location">at         line 97</div>
         <code>                    
     <strong>setName</strong>(string $name)
         </code>
@@ -311,7 +361,7 @@
     
 
                     <div class="method-description">
-                                    <p>Set the database name.</p>                                </div>
+                                    <p>Set the database name.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -341,7 +391,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getConfig">
-        <div class="location">at line         line 117</div>
+        <div class="location">at         line 108</div>
         <code>                    <a href="../Flintstone/Config.html"><abbr title="Flintstone\Config">Config</abbr></a>
     <strong>getConfig</strong>()
         </code>
@@ -351,7 +401,7 @@
     
 
                     <div class="method-description">
-                                    <p>Get the config.</p>                                </div>
+                                    <p>Get the config.</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -371,7 +421,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setConfig">
-        <div class="location">at line         line 127</div>
+        <div class="location">at         line 118</div>
         <code>                    
     <strong>setConfig</strong>(<a href="../Flintstone/Config.html"><abbr title="Flintstone\Config">Config</abbr></a> $config)
         </code>
@@ -381,7 +431,7 @@
     
 
                     <div class="method-description">
-                                    <p>Set the config.</p>                                </div>
+                                    <p>Set the config.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -402,7 +452,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getPath">
-        <div class="location">at line         line 137</div>
+        <div class="location">at         line 128</div>
         <code>                    string
     <strong>getPath</strong>()
         </code>
@@ -412,7 +462,7 @@
     
 
                     <div class="method-description">
-                                    <p>Get the path to the database file.</p>                                </div>
+                                    <p>Get the path to the database file.</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -431,8 +481,57 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_openFile">
+        <div class="location">at         line 142</div>
+        <code>            protected        <a target="_blank" href="http://php.net/SplFileObject">SplFileObject</a>
+    <strong>openFile</strong>(int $mode)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Open the database file.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$mode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/SplFileObject">SplFileObject</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../Flintstone/Exception.html"><abbr title="Flintstone\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_openTempFile">
-        <div class="location">at line         line 186</div>
+        <div class="location">at         line 178</div>
         <code>                    <a target="_blank" href="http://php.net/SplTempFileObject">SplTempFileObject</a>
     <strong>openTempFile</strong>()
         </code>
@@ -442,7 +541,7 @@
     
 
                     <div class="method-description">
-                                    <p>Open a temporary file.</p>                                </div>
+                                    <p>Open a temporary file.</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -461,8 +560,48 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_closeFile">
+        <div class="location">at         line 190</div>
+        <code>            protected        
+    <strong>closeFile</strong>(<a target="_blank" href="http://php.net/SplFileObject">SplFileObject</a> $file)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Close the database file.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/SplFileObject">SplFileObject</a></td>
+                <td>$file</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../Flintstone/Exception.html"><abbr title="Flintstone\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_readFromFile">
-        <div class="location">at line         line 213</div>
+        <div class="location">at         line 205</div>
         <code>                    <a target="_blank" href="http://php.net/Generator">Generator</a>
     <strong>readFromFile</strong>()
         </code>
@@ -472,7 +611,7 @@
     
 
                     <div class="method-description">
-                                    <p>Read lines from the database file.</p>                                </div>
+                                    <p>Read lines from the database file.</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -492,7 +631,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_appendToFile">
-        <div class="location">at line         line 231</div>
+        <div class="location">at         line 223</div>
         <code>                    
     <strong>appendToFile</strong>(string $line)
         </code>
@@ -502,7 +641,7 @@
     
 
                     <div class="method-description">
-                                    <p>Append a line to the database file.</p>                                </div>
+                                    <p>Append a line to the database file.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -523,7 +662,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_flushFile">
-        <div class="location">at line         line 241</div>
+        <div class="location">at         line 233</div>
         <code>                    
     <strong>flushFile</strong>()
         </code>
@@ -533,7 +672,7 @@
     
 
                     <div class="method-description">
-                                    <p>Flush the database file.</p>                                </div>
+                                    <p>Flush the database file.</p>                                                </div>
                 <div class="tags">
             
             
@@ -544,7 +683,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_writeTempToFile">
-        <div class="location">at line         line 252</div>
+        <div class="location">at         line 244</div>
         <code>                    
     <strong>writeTempToFile</strong>(<a target="_blank" href="http://php.net/SplTempFileObject">SplTempFileObject</a> $tmpFile)
         </code>
@@ -554,7 +693,7 @@
     
 
                     <div class="method-description">
-                                    <p>Write temporary file contents to database file.</p>                                </div>
+                                    <p>Write temporary file contents to database file.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
