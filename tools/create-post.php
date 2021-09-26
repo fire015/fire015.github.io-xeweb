@@ -7,7 +7,7 @@ comments: true
 date: %date%
 layout: news_item
 slug: %slug%
-title: %title%
+title: "%title%"
 categories:
 %categories%
 ---

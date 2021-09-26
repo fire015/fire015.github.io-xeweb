@@ -1,0 +1,185 @@
+---
+author: jason
+comments: true
+date: 2021-09-25 08:00:32+00:00
+layout: news_item
+slug: tryhackme-biteme-official-writeup
+title: "[TryHackMe] biteme - official writeup"
+categories:
+- writeup
+---
+
+<p>This is the official writeup for the <a href="https://tryhackme.com/room/biteme" target="_blank">biteme room</a> on TryHackMe, it is the first challenge I created and also my first writeup, feedback is appreciated.</p>
+
+<!--excerpt-->
+
+<p>Let's start with an nmap scan to see what ports are open...</p>
+
+<p><img src="/img/writeup/1.png"></p>
+
+<p>Ok so we have HTTP and SSH access. Let's start with HTTP... put the IP address into your browser and you will see the 'Apache2 Ubuntu Default Page'.</p>
+
+<p><img src="/img/writeup/2.png"></p>
+
+<p>Scanning the source code it doesn't look like there are any clues here, so let's use gobuster to find any hidden files or directories.</p>
+
+<p><img src="/img/writeup/3.png"></p>
+
+<p>Results show we get a 200 response for /console/, so let's open that URL in our browser.</p>
+
+<p><img src="/img/writeup/4.png"></p>
+
+<p>Trying a few random passwords it looks like it takes a few seconds for the form response, so this will make brute force very slow. Perhaps there are other clues in the source code of the page.</p>
+
+<p>I noticed a Javascript function "handleSubmit" which executes when the form has been submitted, it appears this function has been obfuscated.</p>
+
+<p>A quick Google search for "javascript deobfuscator" and we find <a href="https://lelinhtinh.github.io/de4js/" target="_blank">https://lelinhtinh.github.io/de4js/</a>, let's paste in the eval code and see what it does.</p>
+
+<p><img src="/img/writeup/5.png"></p>
+
+<p>Interesting... it set's a hidden field "clicked" to the value of "yes" and also leaves a note in the console to fred from someone called jason.</p>
+
+{% highlight text %}
+@fred I turned on php file syntax highlighting for you to review... jason
+{% endhighlight %}
+
+<p>So php file syntax highlighting... another Google search reveals the <a href="https://www.php.net/manual/en/function.highlight-file.php" target="_blank">PHP manual</a> with the following note:</p>
+
+{% highlight text %}
+Many servers are configured to automatically highlight files with a phps extension. For example, example.phps when viewed will show the syntax highlighted source of the file.
+{% endhighlight %}
+
+<p>So let's try something here, we know the page is called index.php so what happens if we try index.phps?</p>
+
+<p><img src="/img/writeup/6.png"></p>
+
+<p>Boom.. we have the PHP source code for the page. Let's find the part that logs us in...</p>
+
+{% highlight php %}
+$hash = md5($_POST['pwd']);
+
+if (substr($hash, -3) === '001') {
+    ...
+}
+{% endhighlight %}
+
+<p>This creates an MD5 hash of the password and then checks the last 3 characters of that hash match the string "001". Ok so we need to figure out a password that would produce a correct hash.</p>
+
+<p>We can write a script to figure this out. I am going to use an existing wordlist and hash each entry to check if the last 3 characters match "001". I will write this in PHP and use the rockyou wordlist as my input file.</p>
+
+{% highlight php %}
+<?php
+
+$file = fopen('/usr/share/wordlists/rockyou.txt', 'r');
+
+while (($line = fgets($file)) !== false) {
+    $pass = trim($line);
+    $hash = md5($pass);
+    
+    if (substr($hash, -3) === '001') {
+        echo $pass . "\n";
+        break;
+    }
+}
+
+fclose($file);
+{% endhighlight %}
+
+<p>Very quickly we find a suitable password... "violet" which has an MD5 hash of d1d813a48d99f0e102f7d0a1b9068001.</p>
+
+<p>Using violet as the password we now get onto the next page, which asks for a 4 digit code.</p>
+
+<p><img src="/img/writeup/10.png"></p>
+
+<p>Again, there appears to be some obfuscated Javascript so let's see what this one does...</p>
+
+<p><img src="/img/writeup/7.png"></p>
+
+<p>This time it is just a note to fred and it sounds like jason forgot to put any brute force protection on, so let's brute force this form to get the 4 digit code.</p>
+
+<p>For this I am going to use a tool called <a href="https://github.com/lanjelot/patator" target="_blank">patator</a> to cycle through the numbers 1000 - 9999.</p>
+
+{% highlight bash %}
+patator http_fuzz \
+url="http://10.x.x.x/console/mfa.php" \
+method=POST \
+body="code=RANGE0" \
+0=int:1000-9999 \
+header="Cookie: pwd=violet; hash=d1d813a48d99f0e102f7d0a1b9068001" \
+-x ignore:fgrep="Incorrect code"
+{% endhighlight %}
+
+<p><img src="/img/writeup/8.png"></p>
+
+<p>Looks like we found our MFA code (2425). Note: this code is random and will be different on your machine.</p>
+
+<p>Finally we reach the admin dashboard which allows us to browse files on the server.</p>
+
+<p><img src="/img/writeup/9.png"></p>
+
+<p>Using the file browser we can see 2 folders inside /home - fred and jason. Inside jason's home folder we can see a user.txt file so let's view this through the file viewer to get our user flag.</p>
+
+<p>Now onto the root flag... this is presumably stored in /root which cannot be viewed through the file viewer. We will need to elevate privileges somehow. Probing more into jason's home directory it looks like there is a .ssh folder which contains his private and public SSH key.</p>
+
+<p>Let's view the private key file (id_rsa) and save a copy of this locally.</p>
+
+<p><img src="/img/writeup/11.png"></p>
+
+<p>Now we can use this private key to SSH into the server...</p>
+
+{% highlight bash %}
+chmod 600 id_rsa
+ssh -i id_rsa jason@10.x.x.x
+{% endhighlight %}
+
+<p>Except it's not that easy because the private key is password protected! Time to brute force again, this time we are going to use a different tool, john the ripper to crack the password with the rockyou wordlist.</p>
+
+{% highlight bash %}
+python ssh2john.py id_rsa > id_rsa.hash
+john --wordlist=/path/to/rockyou.txt id_rsa.hash
+{% endhighlight %}
+
+<p>If you don't have the ssh2john.py script you can download it <a href="https://github.com/openwall/john/blob/bleeding-jumbo/run/ssh2john.py" target="_blank">here</a>.</p>
+
+<p>Once you have the password cracked you can finally SSH onto the machine.</p>
+
+<p><img src="/img/writeup/12.png"></p>
+
+<p>Running sudo -l on the machine shows that we can switch to the fred account without a password.</p>
+
+<p>Let's do this and cd into his home folder...</p>
+
+{% highlight bash %}
+sudo -u fred bash
+cd /home/fred
+{% endhighlight %}
+
+<p>In his folder we find a todo.txt file and a backup_db.php script.</p>
+
+<p>Running sudo -l again, we can see that root is allowed to execute the backup_db.php script which contains the following:.</p>
+
+{% highlight php %}
+<?php
+
+if (file_exists('backup.sh')) {
+    system('bash backup.sh');
+}
+
+echo 'Done';
+{% endhighlight %}
+
+<p>It's simply making a system call to execute a file called backup.sh. As we can execute the PHP script as root, let's create the backup.sh file in the same directory:</p>
+
+{% highlight bash %}
+cat /root/root.txt
+{% endhighlight %}
+
+<p>Finally execute the PHP script with sudo...</p>
+
+{% highlight bash %}
+sudo /usr/bin/php /home/fred/backup_db.php
+{% endhighlight %}
+
+<p>And we have our root flag!</p>
+
+<p>Thank you for playing and I hope you enjoyed the room.</p>
