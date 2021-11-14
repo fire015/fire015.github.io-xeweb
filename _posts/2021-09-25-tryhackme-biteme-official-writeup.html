@@ -111,7 +111,7 @@ header="Cookie: pwd=violet; hash=d1d813a48d99f0e102f7d0a1b9068001" \
 
 <p><img src="/img/writeup/8.png"></p>
 
-<p>Looks like we found our MFA code (2425). Note: this code is random and will be different on your machine.</p>
+<p>Looks like we found our MFA code. <strong>Note: this code is random and will be different on your machine.</strong></p>
 
 <p>Finally we reach the admin dashboard which allows us to browse files on the server.</p>
 
@@ -145,41 +145,41 @@ john --wordlist=/path/to/rockyou.txt id_rsa.hash
 
 <p><img src="/img/writeup/12.png"></p>
 
-<p>Running sudo -l on the machine shows that we can switch to the fred account without a password.</p>
+<p>Running sudo -l to list the allowed sudo commands on the machine shows that we can switch to the fred account without a password.</p>
 
-<p>Let's do this and cd into his home folder...</p>
+<p>Let's do this and then run the list command again...</p>
 
 {% highlight bash %}
 sudo -u fred bash
-cd /home/fred
+sudo -l
 {% endhighlight %}
 
-<p>In his folder we find a todo.txt file and a backup_db.php script.</p>
+<p>Now we can see a different command that can be run as root:</p>
 
-<p>Running sudo -l again, we can see that root is allowed to execute the backup_db.php script which contains the following:.</p>
+<p><img src="/img/writeup/13.png"></p>
 
-{% highlight php %}
-<?php
+<p>It looks like fred has permissions to restart the <a href="https://www.fail2ban.org/wiki/index.php/Main_Page" target="_blank">fail2ban</a> service as root. There must be somthing exploitable here.</p>
 
-if (file_exists('backup.sh')) {
-    system('bash backup.sh');
-}
+<p>Looking at the fail2ban config file we can see it is setup to monitor failed SSH attempts and then block the IP address for 2 minutes.</p>
 
-echo 'Done';
-{% endhighlight %}
+<p><img src="/img/writeup/14.png"></p>
 
-<p>It's simply making a system call to execute a file called backup.sh. As we can execute the PHP script as root, let's create the backup.sh file in the same directory:</p>
+<p>A quick Google search for fail2ban privilege escalation leads us to <a href="https://grumpygeekwrites.wordpress.com/2021/01/29/privilege-escalation-via-fail2ban/" target="_blank">this article</a> which talks about making sure /etc/fail2ban/action.d is not writable. Ooops...</p>
+
+<p>Let's take a look at the action.d folder. You will notice that it is writable and the iptables-multiport.conf file is owned by user fred, which means we can modify it. Fail2ban runs as root and executes the commands in the action file, so let's change this to view the root flag instead of blocking our IP when the ban is triggered.</p>
+
+<p>In /etc/fail2ban/action.d/iptables-multiport.conf change the actionban line to:</p>
 
 {% highlight bash %}
-cat /root/root.txt
+actionban = cp /root/root.txt /tmp/root.txt && chmod 755 /tmp/root.txt
 {% endhighlight %}
 
-<p>Finally execute the PHP script with sudo...</p>
+<p>Save this and then reload the fail2ban service as root using the command we saw in the sudo list.</p>
 
 {% highlight bash %}
-sudo /usr/bin/php /home/fred/backup_db.php
+sudo systemctl restart fail2ban
 {% endhighlight %}
 
-<p>And we have our root flag!</p>
+<p>Now we just have to trigger the ban. SSH onto the box without a key and enter any password incorrectly. Repeat this 3 times and we should trigger the ban, which will instead copy the root flag file into /tmp.</p>
 
 <p>Thank you for playing and I hope you enjoyed the room.</p>
