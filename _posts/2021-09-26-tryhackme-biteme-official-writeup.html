@@ -26,11 +26,9 @@ categories:
 
 <p><img src="/img/writeup/3.png"></p>
 
-<p>Results show we get a 200 response for /console/, so let's open that URL in our browser.</p>
+<p>Results show we get a 200 response for <code>/console/</code>, so let's open that URL in our browser.</p>
 
 <p><img src="/img/writeup/4.png"></p>
-
-<p>Trying a few random passwords it looks like it takes a few seconds for the form response, so this will make brute force very slow. Perhaps there are other clues in the source code of the page.</p>
 
 <p>I noticed a Javascript function "handleSubmit" which executes when the form has been submitted, it appears this function has been obfuscated.</p>
 
@@ -50,21 +48,31 @@ categories:
 Many servers are configured to automatically highlight files with a phps extension. For example, example.phps when viewed will show the syntax highlighted source of the file.
 {% endhighlight %}
 
-<p>So let's try something here, we know the page is called index.php so what happens if we try index.phps?</p>
+<p>So let's try something here, we know the page is called <code>index.php</code> so what happens if we try <code>index.phps</code>?</p>
 
 <p><img src="/img/writeup/6.png"></p>
 
 <p>Boom.. we have the PHP source code for the page. Let's find the part that logs us in...</p>
 
 {% highlight php %}
-$hash = md5($_POST['pwd']);
-
-if (substr($hash, -3) === '001') {
+if (is_valid_user($_POST['user']) && is_valid_pwd($_POST['pwd'])) {
     ...
 }
 {% endhighlight %}
 
-<p>This creates an MD5 hash of the password and then checks the last 3 characters of that hash match the string "001". Ok so we need to figure out a password that would produce a correct hash.</p>
+<p>Looks like we have some custom functions here. Let's take a look at <code>functions.phps</code> and see if that source code is also visible to see.</p>
+
+<p><img src="/img/writeup/6a.png"></p>
+
+<p>So the <code>is_valid_user</code> function uses <a href="https://www.php.net/manual/en/function.bin2hex.php" target="_blank">bin2hex</a> to compare the submitted username against a constant defined as <code>LOGIN_USER</code>. Let's check <code>config.phps</code> to see if we can extract that constant.</p>
+
+<p><img src="/img/writeup/6b.png"></p>
+
+<p>Now let's reverse this hex string using <code>hex2bin</code> to get the correct value.</p>
+
+<p><img src="/img/writeup/6c.png"></p>
+
+<p>Now let's take a look at the <code>is_valid_pwd</code> function. This creates an MD5 hash of the password and then checks the last 3 characters of that hash match the string "001". Ok so we need to figure out a password that would produce a correct hash.</p>
 
 <p>We can write a script to figure this out. I am going to use an existing wordlist and hash each entry to check if the last 3 characters match "001". I will write this in PHP and use the rockyou wordlist as my input file.</p>
 
@@ -88,7 +96,7 @@ fclose($file);
 
 <p>Very quickly we find a suitable password... "violet" which has an MD5 hash of d1d813a48d99f0e102f7d0a1b9068001.</p>
 
-<p>Using violet as the password we now get onto the next page, which asks for a 4 digit code.</p>
+<p>We can now get onto the next page, which asks for a 4 digit code.</p>
 
 <p><img src="/img/writeup/10.png"></p>
 
