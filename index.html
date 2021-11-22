@@ -5,7 +5,9 @@ section: home
 ---
 
 {% for post in paginator.posts %}
-	{% include news_item.html %}
+	{% unless post.hidden %}
+		{% include news_item.html %}
+	{% endunless %}
 {% endfor %}
 
 <div class="section-nav">

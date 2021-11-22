@@ -3,9 +3,11 @@
     <h4>Latest Posts</h4>
     <ul>
         {% for post in site.posts limit:10 %}
-        <li class="{% if page.title == post.title %}current{% endif %}">
-          <a href="{{ post.url }}">{{ post.title }}</a>
-        </li>
+          {% unless post.hidden %}
+            <li class="{% if page.title == post.title %}current{% endif %}">
+              <a href="{{ post.url }}">{{ post.title }}</a>
+            </li>
+          {% endunless %}
         {% endfor %}
     </ul>
   </aside>
