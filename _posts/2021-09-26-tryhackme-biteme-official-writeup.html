@@ -126,11 +126,11 @@ header="Cookie: user=jason_test_account; pwd=violet" \
 
 <p><img src="/img/writeup/9.png"></p>
 
-<p>Using the file browser we can see 2 folders inside /home - fred and jason. Inside jason's home folder we can see a user.txt file so let's view this through the file viewer to get our user flag.</p>
+<p>Using the file browser we can see 2 folders inside <code>/home</code> - fred and jason. Inside jason's home folder we can see a <code>user.txt</code> file so let's view this through the file viewer to get our user flag.</p>
 
-<p>Now onto the root flag... this is presumably stored in /root which cannot be viewed through the file viewer. We will need to elevate privileges somehow. Probing more into jason's home directory it looks like there is a .ssh folder which contains his private and public SSH key.</p>
+<p>Now onto the root flag... this is presumably stored in <code>/root</code> which cannot be viewed through the file viewer. We will need to elevate privileges somehow. Probing more into jason's home directory it looks like there is a <code>.ssh</code> folder which contains his private and public SSH key.</p>
 
-<p>Let's view the private key file (id_rsa) and save a copy of this locally.</p>
+<p>Let's view the private key file (<code>id_rsa</code>) and save a copy of this locally.</p>
 
 <p><img src="/img/writeup/11.png"></p>
 
@@ -154,7 +154,7 @@ john --wordlist=/path/to/rockyou.txt id_rsa.hash
 
 <p><img src="/img/writeup/12.png"></p>
 
-<p>Running sudo -l to list the allowed sudo commands on the machine shows that we can switch to the fred account without a password.</p>
+<p>Running <code>sudo -l</code> to list the allowed sudo commands on the machine shows that we can switch to the fred account without a password.</p>
 
 <p>Let's do this and then run the list command again...</p>
 
@@ -173,11 +173,11 @@ sudo -l
 
 <p><img src="/img/writeup/14.png"></p>
 
-<p>A quick Google search for fail2ban privilege escalation leads us to <a href="https://grumpygeekwrites.wordpress.com/2021/01/29/privilege-escalation-via-fail2ban/" target="_blank">this article</a> which talks about making sure /etc/fail2ban/action.d is not writable. Ooops...</p>
+<p>A quick Google search for fail2ban privilege escalation leads us to <a href="https://grumpygeekwrites.wordpress.com/2021/01/29/privilege-escalation-via-fail2ban/" target="_blank">this article</a> which talks about making sure <code>/etc/fail2ban/action.d</code> is not writable. Ooops...</p>
 
-<p>Let's take a look at the action.d folder. You will notice that it is writable and the iptables-multiport.conf file is owned by user fred, which means we can modify it. Fail2ban runs as root and executes the commands in the action file, so let's change this to view the root flag instead of blocking our IP when the ban is triggered.</p>
+<p>Let's take a look at the <code>action.d</code> folder. You will notice that it is writable and the <code>iptables-multiport.conf</code> file is owned by user fred, which means we can modify it. Fail2ban runs as root and executes the commands in the action file, so let's change this to view the root flag instead of blocking our IP when the ban is triggered.</p>
 
-<p>In /etc/fail2ban/action.d/iptables-multiport.conf change the actionban line to:</p>
+<p>In <code>/etc/fail2ban/action.d/iptables-multiport.conf</code> change the actionban line to:</p>
 
 {% highlight bash %}
 actionban = cp /root/root.txt /tmp/root.txt && chmod 755 /tmp/root.txt
@@ -189,6 +189,6 @@ actionban = cp /root/root.txt /tmp/root.txt && chmod 755 /tmp/root.txt
 sudo systemctl restart fail2ban
 {% endhighlight %}
 
-<p>Now we just have to trigger the ban. SSH onto the box without a key and enter any password incorrectly. Repeat this 3 times and we should trigger the ban, which will instead copy the root flag file into /tmp.</p>
+<p>Now we just have to trigger the ban. SSH onto the box without a key and enter any password incorrectly. Repeat this 3 times and we should trigger the ban, which will instead copy the root flag file into <code>/tmp</code>.</p>
 
 <p>Thank you for playing and I hope you enjoyed the room.</p>
