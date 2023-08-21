@@ -1,5 +1,6 @@
 ---
 layout: news
+section: blog
 ---
 
 <article>
@@ -13,27 +14,11 @@ layout: news
 
 	<div class="post-meta">
 		<span class="post-date">{{ page.date | date_to_string }}</span>
-		<a href="/author/{{ page.author }}/" class="post-author"><img src="/img/avatar.png" class="avatar" width="24" height="24">{{ page.author|capitalize }}</a>
+		<a href="/blog/author/{{ page.author }}/" class="post-author"><img src="/img/avatar.png" class="avatar" width="24" height="24">{{ page.author|capitalize }}</a>
 	</div>
 
 	<div class="post-content">
 		{{ content }}
 	</div>
-
-	{% if page.comments %}
-		<div id="disqus_thread"></div>
-		<script>
-			var disqus_config = function () {
-				this.page.identifier = '{{ page.url }}';
-			};
-
-			(function() {
-				var d = document, s = d.createElement('script');
-				s.src = '//xeweb.disqus.com/embed.js';
-				s.setAttribute('data-timestamp', +new Date());
-				(d.head || d.body).appendChild(s);
-			})();
-		</script>
-	{% endif %}
 
 </article>

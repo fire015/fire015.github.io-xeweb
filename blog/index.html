@@ -1,0 +1,27 @@
+---
+layout: news
+title: XEWeb Blog
+section: blog
+---
+
+{% for post in paginator.posts %}
+	{% unless post.hidden %}
+		{% include news_item.html %}
+	{% endunless %}
+{% endfor %}
+
+<div class="section-nav">
+
+	{% if paginator.previous_page %}
+		<div class="left align-right">
+			<a href="{{ paginator.previous_page_path }}" class="prev">Back</a>
+		</div>
+	{% endif %}
+
+	{% if paginator.next_page %}
+		<div class="right align-left">
+			<a href="{{ paginator.next_page_path }}" class="next">Next</a>
+		</div>
+	{% endif %}
+
+</div>

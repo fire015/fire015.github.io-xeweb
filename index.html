@@ -1,27 +1,47 @@
 ---
-layout: news
-title: XEWeb
+layout: home
 section: home
 ---
 
-{% for post in paginator.posts %}
-	{% unless post.hidden %}
-		{% include news_item.html %}
-	{% endunless %}
-{% endfor %}
-
-<div class="section-nav">
-
-	{% if paginator.previous_page %}
-		<div class="left align-right">
-			<a href="{{ paginator.previous_page_path }}" class="prev">Back</a>
-		</div>
-	{% endif %}
-
-	{% if paginator.next_page %}
-		<div class="right align-left">
-			<a href="{{ paginator.next_page_path }}" class="next">Next</a>
-		</div>
-	{% endif %}
-
-</div>
+<section class="page-section mb-0" id="about">
+    <div class="container">
+        <!-- About Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase">About</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- About Section Content-->
+        <div class="row">
+            <div class="col-lg-4 ms-auto">
+                <p class="lead">
+                    Hi there, I'm Jason. For the past 12 years I have worked in various software engineering leadership roles. I've been lucky enough to work for some fantastic companies, including Facebook and BP.
+                    <br><br>
+                    After a while, I started to feel like I wanted to do something more. I wanted to help startups navigate the technical challenges they face as they grow and scale. I realized that I had a lot of knowledge and experience to offer and I wanted to put it to use helping others.
+                </p>
+            </div>
+            <div class="col-lg-4 me-auto">
+                <p class="lead">
+                    As a technical advisor I work with startups of all sizes and stages, helping them develop their technical strategies and overcome challenges - from hiring great engineers to building an MVP.
+                    <br><br>
+                    I have a knack for explaining complex technical concepts in a way that is easy for non-technical stakeholders to understand.
+                    <br><br>
+                    I'd love to hear from you if this is something you're interested in.
+                </p>
+            </div>
+        </div>
+        <!-- About Section Button-->
+        <div class="text-center mt-4">
+            <a href="mailto:jason@xeweb.net" class="btn btn-xl btn-outline-dark me-2 btn-mb">
+                <i class="fas fa-comments me-2"></i>
+                Contact Me
+            </a>
+            <a href="https://www.linkedin.com/in/jasonmargolin/" target="_blank" class="btn btn-xl btn-outline-dark">
+                <i class="fab fa-fw fa-linkedin-in"></i>
+                LinkedIn Profile
+            </a>
+        </div>
+    </div>
+</section>
