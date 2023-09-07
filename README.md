@@ -1,7 +1,7 @@
 # XEWeb
-The XEWeb blog.
+The XEWeb website and blog.
 
-Run in GitHub Codespaces using [bundle commands](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll).
+Run in GitHub Codespaces using `bundle exec jekyll serve` (see [bundle commands](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll)).
 
 Alternatively run `make` to start the docker container, install the dependencies and serve the website at http://localhost:4000/
 
