@@ -11052,3 +11052,11 @@ html {
     margin-bottom: 20px;
   }
 }
+
+#carouselTestimonials figure {
+  margin: 0 50px;
+}
+
+#carouselTestimonials button {
+  width: 32px;
+}
