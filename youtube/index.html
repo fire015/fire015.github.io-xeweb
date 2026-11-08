@@ -8,6 +8,11 @@
     <style>
       body { font-family: "Inter", sans-serif; }
       a { color: #056cf2; text-decoration: none; }
+      /* Prevent iOS Safari from zooming in when the Algolia search input is focused.
+         iOS auto-zooms on any text input with a computed font-size below 16px. */
+      #autocomplete .ais-AutocompleteInput {
+        font-size: 16px !important;
+      }
     </style>
   </head>
   <body>
